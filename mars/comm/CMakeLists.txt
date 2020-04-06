@@ -120,6 +120,11 @@ if(ANDROID)
             jni/util/*.cc)
         
     list(APPEND SELF_SRC_FILES ${SELF_ANDROID_SRC_FILES})
+elseif ("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
+    file(GLOB SELF_LINUX_SRC_FILES RELATIVE ${PROJECT_SOURCE_DIR}
+            jni/xlogger_threadinfo.cc)
+        
+    list(APPEND SELF_SRC_FILES ${SELF_LINUX_SRC_FILES})
 elseif(APPLE)
 
     file(GLOB SELF_TEMP_SRC_FILES RELATIVE ${PROJECT_SOURCE_DIR} objc/*.mm objc/*.h)

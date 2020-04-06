@@ -19,6 +19,11 @@
 //
 
 #include <unistd.h>
+#include <stdint.h>
+#ifndef ANDROID
+#include <sys/syscall.h>
+#define gettid() syscall(SYS_gettid)
+#endif
 #include "compiler_util.h"
 
 extern "C"

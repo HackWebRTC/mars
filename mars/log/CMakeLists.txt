@@ -59,7 +59,11 @@ elseif(ANDROID)
 
     get_filename_component(EXPORT_EXP_FILE jni/export.exp ABSOLUTE)
     set (CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--version-script=${EXPORT_EXP_FILE}")
-
+elseif ("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
+    file(GLOB SELF_LINUX_SRC_FILES RELATIVE ${PROJECT_SOURCE_DIR}
+            jni/ConsoleLog.cc)
+        
+    list(APPEND SELF_SRC_FILES ${SELF_LINUX_SRC_FILES})
 endif()
 
 # add_library(${PROJECT_NAME} STATIC ${SELF_SRC_FILES})

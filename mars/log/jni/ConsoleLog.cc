@@ -17,7 +17,9 @@
 
 #include <stdio.h>
 #include <string.h>
+#ifdef ANDROID
 #include <android/log.h>
+#endif
 
 #include "mars/comm/xlogger/xloggerbase.h"
 #include "mars/comm/xlogger/loginfo_extract.h"
@@ -35,10 +37,18 @@ void ConsoleLog(const XLoggerInfo* _info, const char* _log) {
         const char* strFuncName  = NULL == _info->func_name ? "" : _info->func_name;
 
         snprintf(result_log,  sizeof(result_log), "[%s:%d, %s]:%s", filename, _info->line, strFuncName, _log?_log:"NULL==log!!!");
+#ifdef ANDROID
         __android_log_write(_info->level+2, _info->tag?_info->tag:"", (const char*)result_log);
+#else
+        printf("%s", (const char*)result_log);
+#endif
     } else {
     	snprintf(result_log,  sizeof(result_log) , "%s", _log?_log:"NULL==log!!!");
+#ifdef ANDROID
         __android_log_write(ANDROID_LOG_WARN, "", (const char*)result_log);
+#else
+        printf("%s", (const char*)result_log);
+#endif
     }
     
 }

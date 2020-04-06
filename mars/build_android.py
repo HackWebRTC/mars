@@ -165,18 +165,18 @@ if __name__ == '__main__':
             main(False, archs, tag=sys.argv[1])
             break
         else:
-            archs = {'armeabi-v7a', 'arm64-v8a'}
-            num = raw_input('Enter menu:\n1. Clean && build mars.\n2. Build incrementally mars.\n3. Clean && build xlog.\n4. Exit\n')
-            if num == '1':
+            archs = {'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'}
+            num = input('Enter menu:\n1. Clean && build mars.\n2. Build incrementally mars.\n3. Clean && build xlog.\n4. Exit\n')
+            if num == 1:
                 main(False, archs)
                 break
-            elif num == '2':
+            elif num == 2:
                 main(True, archs)
                 break
-            elif num == '3':
+            elif num == 3:
                 main(False, archs, '--target libzstd_static marsxlog')
                 break
-            elif num == '4':
+            elif num == 4:
                 break
             else:
                 main(False, archs)
