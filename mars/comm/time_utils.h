@@ -23,7 +23,7 @@
 
 #include <stdint.h>
 #include <stdio.h>
-#ifdef __cplusplus
+#if defined(__cplusplus) && !defined(KMP_XLOG_WINDOWS)
 extern "C" {
 #endif
     
@@ -33,7 +33,7 @@ extern "C" {
     
     uint64_t clock_app_monotonic();  // ms
 
-#ifdef __cplusplus
+#if defined(__cplusplus) && !defined(KMP_XLOG_WINDOWS)
 }
 #endif
 

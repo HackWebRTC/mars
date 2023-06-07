@@ -123,7 +123,7 @@ public:
     mapped_file_impl();
     ~mapped_file_impl();
     void open(param_type p);
-    bool is_open() const { return (data_ != 0 && handle_ >= 0); }
+    bool is_open() const { return (data_ != 0 && (int64_t)handle_ >= 0); }
     void close();
     bool error() const { return error_; }
     mapmode flags() const { return params_.flags; }

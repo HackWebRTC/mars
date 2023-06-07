@@ -17,13 +17,14 @@
 
 #include <errno.h>
 #include <stdlib.h>
-#include <xtimec.h>
 
 
 #include "assert/__assert.h"
 #include "condition.h"
 #include "thread/runnable.h"
+#ifndef XLOG_NO_CRYPT
 #include "mars/openssl/include/openssl/crypto.h"
+#endif
 
 typedef HANDLE  thread_handler;
 #define thrd_success (0)
@@ -355,8 +356,10 @@ class Thread {
     }
 
     static void cleanup(void* arg) {
+#ifndef XLOG_NO_CRYPT
         // cleanup tls alloctions for openssl.
         OPENSSL_thread_stop();
+#endif
 
         volatile RunnableReference* runableref = static_cast<RunnableReference*>(arg);
         ScopedSpinLock lock((const_cast<RunnableReference*>(runableref))->splock);

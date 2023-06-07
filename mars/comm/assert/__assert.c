@@ -36,7 +36,11 @@ void __assert_rtn(const char *, const char *, int, const char *) __dead2;
 #endif
 
 EXPORT_FUNC void __ASSERT(const char * _pfile, int _line, const char * _pfunc, const char * _pexpression) {
+#if defined(KMP_XLOG_WINDOWS)
+    XLoggerInfo info= {};
+#else
     XLoggerInfo info= {0};
+#endif
     char assertlog[4096] = {'\0'};
     snprintf(assertlog, sizeof(assertlog), "[ASSERT(%s)]", _pexpression);
 

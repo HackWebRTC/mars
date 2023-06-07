@@ -12,6 +12,7 @@
 
 
 #include <string>
+#include <windows.h>
 
 namespace mars{
     namespace comm{

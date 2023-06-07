@@ -43,6 +43,7 @@
 #endif
 
 #include <ctype.h>
+#include <inttypes.h>
 #include <assert.h>
 
 #include <unistd.h>

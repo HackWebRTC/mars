@@ -22,7 +22,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-#ifndef _WIN32
+#if !defined(_WIN32) || defined(KMP_XLOG_WINDOWS)
 #define __STDC_FORMAT_MACROS
 #include <strings.h>
 #else
