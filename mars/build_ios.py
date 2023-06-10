@@ -138,9 +138,6 @@ def build_ios_xlog(tag=''):
     print('==================Output========================')
     print(sim_dst_framework_path)
 
-    os.system('xcodebuild -create-xcframework -framework %s -framework %s -output %s/mars.xcframework' % (os_dst_framework_path, sim_dst_framework_path, INSTALL_PATH))
-
-
 def gen_ios_project():
     gen_mars_revision_file('comm')
     clean(BUILD_OUT_PATH)
