@@ -69,7 +69,8 @@ def get_android_strip_cmd(arch):
     else:
         pass
 
-    strip_cmd = ANDROID_STRIP_FILE[arch] %(system_str)
+    # strip_cmd = ANDROID_STRIP_FILE[arch] %(system_str)
+    strip_cmd = '%s/toolchains/llvm/prebuilt/%s/bin/llvm-strip' % (NDK_ROOT, system_str)
     print('Android strip cmd:%s' %(strip_cmd))
     return strip_cmd
 
