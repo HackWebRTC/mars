@@ -97,6 +97,7 @@ std::function<void (char* _log)> g_console_log_fun = nullptr;
 #else
 std::function<void (char* _log)> g_console_log_fun = [](char* _log) {
     ::OutputDebugStringA(_log);
+    printf(_log);
 };
 #endif
 void ConsoleLog(const XLoggerInfo* _info, const char* _log)
